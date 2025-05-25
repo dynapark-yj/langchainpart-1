@@ -29,8 +29,16 @@ tabs = ["회사 정보", "AI 투자자 보고서" ]
 tab1, tab2 = st.tabs(tabs)
 
 with tab1:
-
+st.header(str(selected))
+    st.write(stock.get_basic_info())
+    st.write(stock.get_financial_statement())
 
 
 with tab2:
+    st.header("AI 투자 보고서")
+    if st.button("보고서 생성"):
+        with st.spinner(text="In progress..."):
+            report = invesment_report(selected.name, selected.symbol)
+            st.success("Done.")
+        st.write(report)
 
